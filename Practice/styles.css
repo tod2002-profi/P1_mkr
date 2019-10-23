@@ -1,23 +1,78 @@
-.icon {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  line-height: inherit;
-  display: inline-block;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
+/* 
+використано матеріали 
+https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
+*/
 
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
+/* Налаштування контейнера*/
+ .container {
+    font-size: 12px;
+    font-family: Roboto; 
+    font-weight: 500;  
+    height: 12px;
+    margin-top: 24px;
+    margin-left: 22px;
+    padding-left: 38px;  
+    padding-bottom: 24px;
+    display: block;
+    position: relative;   
+    cursor: pointer;
+    border-bottom: 1px solid #DEDEDE;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
+  /* без лінії підкреслення після останнього пункту */
+  .container:last-child {
+      border: none;
+  }
 
-  /* Support for IE. */
-  font-feature-settings: 'liga';
-}
+  /* звичайні кнопки невидимі */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* створити кружок */
+  .checkmark {
+    position: absolute;
+    top: -6px;
+    left: 0;
+    height: 23px;
+    width: 23px; 
+    background-color: #FFFFFF;
+    border: 1px solid #DFDFDF;
+    border-radius: 50%;
+  }
+  
+  /* зміна кольору кружка при наведенні */
+  .container:hover input ~ .checkmark {
+    background-color: #EEE;
+  }
+   
+  /* створити невдимий вказівник якщо не вибрано */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Показати вказівник якщо вибрано */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* стиль вказівника (кружочка)*/
+  .container .checkmark:after {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #5F86ED;
+  }
